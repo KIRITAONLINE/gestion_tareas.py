@@ -1,0 +1,170 @@
+# gestion_tareas.py
+
+def mostrar_menu():
+    print("1. Gestionar tareas")
+    print("2. Evaluar rendimiento de estudiantes")
+    print("3. Registrar contactos")
+    print("4. Calculadora avanzada")
+    print("5. Salir")
+
+def gestionar_tareas():
+    tareas = []
+    while True:
+        print("\nGestión de tareas")
+        print("1. Añadir tarea")
+        print("2. Mostrar tareas")
+        print("3. Eliminar tarea")
+        print("4. Volver al menú principal")
+        
+        opcion = input("Seleccione una opción: ")
+        
+        if opcion == "1":
+            tarea = input("Ingrese la tarea: ")
+            tareas.append(tarea)
+            print("Tarea añadida.")
+        elif opcion == "2":
+            print("Tareas actuales:")
+            for i, tarea in enumerate(tareas, 1):
+                print(f"{i}. {tarea}")
+        elif opcion == "3":
+            for i, tarea in enumerate(tareas, 1):
+                print(f"{i}. {tarea}")
+            try:
+                indice = int(input("Ingrese el número de la tarea a eliminar: ")) - 1
+                if 0 <= indice < len(tareas):
+                    tareas.pop(indice)
+                    print("Tarea eliminada.")
+                else:
+                    print("Número de tarea inválido.")
+            except ValueError:
+                print("Entrada no válida.")
+        elif opcion == "4":
+            break
+        else:
+            print("Opción no válida.")
+
+def evaluar_rendimiento():
+    estudiantes = {}
+    while True:
+        print("\nEvaluar rendimiento de estudiantes")
+        print("1. Añadir nota")
+        print("2. Mostrar notas")
+        print("3. Volver al menú principal")
+        
+        opcion = input("Seleccione una opción: ")
+        
+        if opcion == "1":
+            nombre = input("Ingrese el nombre del estudiante: ")
+            nota = float(input("Ingrese la nota del estudiante: "))
+            estudiantes[nombre] = nota
+            print("Nota añadida.")
+        elif opcion == "2":
+            print("Notas de los estudiantes:")
+            for estudiante, nota in estudiantes.items():
+                print(f"{estudiante}: {nota}")
+        elif opcion == "3":
+            break
+        else:
+            print("Opción no válida.")
+
+def registrar_contactos():
+    contactos = {}
+    while True:
+        print("\nRegistrar contactos")
+        print("1. Añadir contacto")
+        print("2. Mostrar contactos")
+        print("3. Eliminar contacto")
+        print("4. Volver al menú principal")
+        
+        opcion = input("Seleccione una opción: ")
+        
+        if opcion == "1":
+            nombre = input("Ingrese el nombre del contacto: ")
+            telefono = input("Ingrese el teléfono del contacto: ")
+            contactos[nombre] = telefono
+            print("Contacto añadido.")
+        elif opcion == "2":
+            print("Contactos registrados:")
+            for nombre, telefono in contactos.items():
+                print(f"{nombre}: {telefono}")
+        elif opcion == "3":
+            nombre = input("Ingrese el nombre del contacto a eliminar: ")
+            if nombre in contactos:
+                del contactos[nombre]
+                print("Contacto eliminado.")
+            else:
+                print("Contacto no encontrado.")
+        elif opcion == "4":
+            break
+        else:
+            print("Opción no válida.")
+
+def calculadora_avanzada():
+    import math
+    while True:
+        print("\nCalculadora avanzada")
+        print("1. Sumar")
+        print("2. Restar")
+        print("3. Multiplicar")
+        print("4. Dividir")
+        print("5. Potencia")
+        print("6. Raíz cuadrada")
+        print("7. Volver al menú principal")
+        
+        opcion = input("Seleccione una opción: ")
+        
+        if opcion == "1":
+            x = float(input("Ingrese el primer número: "))
+            y = float(input("Ingrese el segundo número: "))
+            print(f"Resultado: {x + y}")
+        elif opcion == "2":
+            x = float(input("Ingrese el primer número: "))
+            y = float(input("Ingrese el segundo número: "))
+            print(f"Resultado: {x - y}")
+        elif opcion == "3":
+            x = float(input("Ingrese el primer número: "))
+            y = float(input("Ingrese el segundo número: "))
+            print(f"Resultado: {x * y}")
+        elif opcion == "4":
+            x = float(input("Ingrese el primer número: "))
+            y = float(input("Ingrese el segundo número: "))
+            if y != 0:
+                print(f"Resultado: {x / y}")
+            else:
+                print("No se puede dividir entre cero.")
+        elif opcion == "5":
+            x = float(input("Ingrese la base: "))
+            y = float(input("Ingrese el exponente: "))
+            print(f"Resultado: {x ** y}")
+        elif opcion == "6":
+            x = float(input("Ingrese el número: "))
+            if x >= 0:
+                print(f"Resultado: {math.sqrt(x)}")
+            else:
+                print("No se puede calcular la raíz cuadrada de un número negativo.")
+        elif opcion == "7":
+            break
+        else:
+            print("Opción no válida.")
+
+def main():
+    while True:
+        mostrar_menu()
+        opcion = input("Seleccione una opción: ")
+        
+        if opcion == "1":
+            gestionar_tareas()
+        elif opcion == "2":
+            evaluar_rendimiento()
+        elif opcion == "3":
+            registrar_contactos()
+        elif opcion == "4":
+            calculadora_avanzada()
+        elif opcion == "5":
+            print("Saliendo...")
+            break
+        else:
+            print("Opción no válida.")
+
+if __name__ == "__main__":
+    main()
